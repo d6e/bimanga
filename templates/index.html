@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ name }}</h1>
+  <ul>
+  {% for title in items %}
+    <li><a href="{{ url_for('get_page1', title=title) }}">{{ title }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
