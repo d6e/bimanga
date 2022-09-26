@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>{{ name }}</h1>
+  <h1>Manga</h1>
   <ul>
   {% for title in items %}
-    <li><a href="{{ url_for('get_page1', title=title) }}">{{ title }}</a></li>
+    <li><a href="{{ url_for('get_dir', path=path + '/' + title) }}">{{ title }}</a></li>
   {% endfor %}
   </ul>
 {% endblock %}
