@@ -1,6 +1,7 @@
+{% extends 'base.html' %}
 {% block content %}
-<a href="<image url>">
-  <img alt="" src="/ch1.jpg">
-    <button class="btn">Button</button>
-</a>
+<img alt="" src="{{ url_for('static', filename='FrierenAtTheFuneral/eng/ch1/01.jpg') }}>">
+
+  <button onclick="window.location.href='https://w3docs.com';">Next</button>
+
 {% endblock %}

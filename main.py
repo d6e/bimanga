@@ -5,8 +5,8 @@ import flask
 from flask import Flask, send_file
 from markupsafe import escape
 
-app = Flask(__name__)
 library = 'manga'
+app = Flask(__name__,  static_folder=library)
 
 
 @app.route("/")
@@ -35,8 +35,7 @@ def get_page3(title, lang, chapter):
     lang = escape(lang)
     chapter = escape(chapter)
     path = title + "/" + lang + "/" + chapter
-    return flask.render_template('pages.html', name='Chapters', path=path,
-                                 items=os.listdir(pathlib.Path(library, title, lang, chapter)))
+    return flask.render_template('pages.html', name='Chapters', path=path, items=os.listdir(pathlib.Path(library, title, lang, chapter)))
 
 
 @app.route("/<title>/<lang>/<chapter>/<page>")
@@ -45,10 +44,9 @@ def get_page4(title, lang, chapter, page):
     lang = escape(lang)
     chapter = escape(chapter)
     page = escape(page)
-    path = pathlib.Path(library, title, lang, chapter, page)
-    if not path.exists():
-        return 404
-    return send_file(path, mimetype='image/gif')
+    path = f"{library}/{title}/{lang}/{chapter}/{page}"
+    return flask.render_template('page.html', image_path=path)
+    # return send_file(path, mimetype='image/gif')
 
 
 if __name__ == '__main__':
