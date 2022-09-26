@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Chapters</h1>
+  <ul>
+  {% for item in items %}
+    <li><a href="/{{ path }}/{{ item }}">{{ item }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
